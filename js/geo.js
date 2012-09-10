@@ -11,27 +11,29 @@
 // Author: $Author: estebanav $:
 // Date: $Date: 2012-09-07 23:03:53 -0300 (Fri, 07 Sep 2012) $:    
 
-var bb_success;
-var bb_error;
-var bb_blackberryTimeout_id=-1;
+var bb = { 
+        success: 0,
+        error: 0,
+        blackberryTimeoutId : -1
+    };
 
 function handleBlackBerryLocationTimeout()
 {
-	if(bb_blackberryTimeout_id!=-1) {
-		bb_error({ message:     "Timeout error", 
+	if(bb.blackberryTimeoutId!=-1) {
+		bb.error({ message:     "Timeout error", 
                    code:        3
                });
 	}
 }
 function handleBlackBerryLocation()
 {
-		clearTimeout(bb_blackberryTimeout_id);
-		bb_blackberryTimeout_id=-1;
-        if (bb_success && bb_error) {
+		clearTimeout(bb.blackberryTimeoutId);
+		bb.blackberryTimeoutId=-1;
+        if (bb.success && bb.error) {
                 if(blackberry.location.latitude==0 && blackberry.location.longitude==0) {
                         //http://dev.w3.org/geo/api/spec-source.html#position_unavailable_error
                         //POSITION_UNAVAILABLE (numeric value 2)
-                        bb_error({message:"Position unavailable", code:2});
+                        bb.error({message:"Position unavailable", code:2});
                 }
                 else
                 {  
@@ -42,7 +44,7 @@ function handleBlackBerryLocation()
                         {
                                 timestamp = new Date( blackberry.location.timestamp );
                         }
-                        bb_success( { timestamp:    timestamp , 
+                        bb.success( { timestamp:    timestamp , 
                                       coords: { 
                                             latitude:  blackberry.location.latitude,
                                             longitude: blackberry.location.longitude
@@ -53,12 +55,12 @@ function handleBlackBerryLocation()
                 //is not working as described http://na.blackberry.com/eng/deliverables/8861/blackberry_location_removeLocationUpdate_568409_11.jsp
                 //the callback are set to null to indicate that the job is done
 
-                bb_success = null;
-                bb_error = null;
+                bb.success = null;
+                bb.error = null;
         }
 }
 
-var geo_position_js=function() {
+var geoPosition=function() {
 
         var pub = {};
         var provider=null;
@@ -74,8 +76,8 @@ var geo_position_js=function() {
         {			
                 try
                 {
-                        if (typeof(geo_position_js_simulator)!=u){
-                                provider=geo_position_js_simulator;
+                        if (typeof(geoPosition_simulator)!=u){
+                                provider=geoPosition_simulator;
                         } else if (typeof(bondi)!=u && typeof(bondi.geolocation)!=u) {
                                 provider=bondi.geolocation;
                         } else if (typeof(navigator.geolocation)!=u) {
@@ -112,15 +114,15 @@ var geo_position_js=function() {
                                         //passing over callbacks as parameter didn't work consistently
                                         //in the onLocationUpdate method, thats why they have to be set
                                         //outside
-                                        bb_success = success;
-                                        bb_error = error;
+                                        bb.success = success;
+                                        bb.error = error;
                                         //function needs to be a string according to
                                         //http://www.tonybunce.com/2008/05/08/Blackberry-Browser-Amp-GPS.aspx
 										if(opts['timeout']) {
-										 	bb_blackberryTimeout_id = setTimeout("handleBlackBerryLocationTimeout()",opts['timeout']);
+										 	bb.blackberryTimeoutId = setTimeout("handleBlackBerryLocationTimeout()",opts['timeout']);
 										} else {
                                             //default timeout when none is given to prevent a hanging script
-											bb_blackberryTimeout_id = setTimeout("handleBlackBerryLocationTimeout()",60000);
+											bb.blackberryTimeoutId = setTimeout("handleBlackBerryLocationTimeout()",60000);
 										}										
 										blackberry.location.onLocationUpdate("handleBlackBerryLocation()");
                                         blackberry.location.refreshLocation();
