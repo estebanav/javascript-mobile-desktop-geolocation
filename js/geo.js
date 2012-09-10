@@ -71,6 +71,28 @@ var geoPosition=function() {
                 provider.getCurrentPosition(success, error,opts);
         }
 		
+        pub.ieVersion = function( lessThan ) {
+            var detect = navigator.userAgent.toLowerCase();
+            if(!(navigator && navigator.userAgent && navigator.userAgent.toLowerCase)) {
+                  return -1;
+            } else {
+                  if(detect.indexOf('msie') + 1) {
+                          // Returns the version of Internet Explorer or a -1
+                          // (indicating the use of another browser).
+                          var rv = -1; // Return value assumes failure
+                          if (navigator.appName == 'Microsoft Internet Explorer') {
+                              var ua = navigator.userAgent;
+                              var re = new RegExp("MSIE ([0-9]{1,}[\.0-9]{0,})");
+                              if (re.exec(ua) != null) {
+                                  rv = parseFloat( RegExp.$1 );
+                              }
+                          }
+                            if( rv <= lessThan )
+                              return rv;
+                      } 
+            }
+          return -1;
+        } 
 
         pub.init = function()
         {			
@@ -128,7 +150,7 @@ var geoPosition=function() {
                                         blackberry.location.refreshLocation();
                                 }
                                 provider = blackberry.location;				
-                        } else if( ie > 0) {
+                        } else if( pub.ieVersion(8) > 0) {
                                 // IE behaviour
 
                         } else if ( typeof(Mojo) !=u && typeof(Mojo.Service.Request)!="Mojo.Service.Request") {
