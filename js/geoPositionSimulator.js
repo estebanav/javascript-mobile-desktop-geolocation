@@ -13,7 +13,6 @@
 
 
 var geoPositionSimulator=function(){
-
 	var pub = {};
 	var currentPosition=null;
 	pub.init = function(array)
