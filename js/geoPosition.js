@@ -121,7 +121,7 @@ var geoPosition=function() {
                 {
                     if (typeof(geoPositionSimulator)!=u){
                             provider=geoPositionSimulator;
-                    } else if (typeof(bondi)!=u && typeof(bondi.geolocation)!=u) {
+                    } else if (typeof(bondi)!=u && typeof(bondi.geolocation)!=u  ) {
                             provider=bondi.geolocation;
                     } else if (typeof(navigator.geolocation)!=u) {
                             provider=navigator.geolocation;
