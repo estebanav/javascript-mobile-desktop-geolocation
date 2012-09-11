@@ -119,7 +119,8 @@ var geoPosition=function() {
         {			
                 try
                 {
-                    if ( typeof(geoPositionSimulator)!=u ){
+                    //console.debug(( typeof(geoPositionSimulator)!=u ) && (geoPositionSimulator.length > 0 ) );
+                    if ( ( typeof(geoPositionSimulator)!=u ) && (geoPositionSimulator.length > 0 ) ){
                             provider=geoPositionSimulator;
                     } else if (typeof(bondi)!=u && typeof(bondi.geolocation)!=u  ) {
                             provider=bondi.geolocation;
