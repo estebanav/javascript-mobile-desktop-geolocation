@@ -33,6 +33,12 @@
 		}
 		function initialise()
 		{
+			var locations=new Array({ coords: {
+										latitude: 	30.2847664,
+										longitude: -97.7264275
+									} 
+								});
+			geoPositionSimulator.init(locations);
 			if(geoPosition.init())
 			{
 				document.getElementById('current').innerHTML="Receiving...";
