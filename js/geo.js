@@ -65,10 +65,31 @@ var geoPosition=function() {
         var pub = {};
         var provider=null;
 		var u="undefined";
+        var ipGeolocationSrv = 'http://freegeoip.net/json/?callback=JSONPCallback';
 
         pub.getCurrentPosition = function(success,error,opts)
         {
                 provider.getCurrentPosition(success, error,opts);
+        }
+
+        pub.jsonp = {
+            callbackCounter: 0,
+
+            fetch: function(url, callback) {
+                var fn = 'JSONPCallback_' + this.callbackCounter++;
+                window[fn] = this.evalJSONP(callback);
+                url = url.replace('=JSONPCallback', '=' + fn);
+
+                var scriptTag = document.createElement('SCRIPT');
+                scriptTag.src = url;
+                document.getElementsByTagName('HEAD')[0].appendChild(scriptTag);
+            },
+
+            evalJSONP: function(callback) {
+                return function(data) {
+                    callback(data);
+                }
+            }
         }
 		
         pub.ieVersion = function( lessThan ) {
@@ -152,6 +173,17 @@ var geoPosition=function() {
                                 provider = blackberry.location;				
                         } else if( pub.ieVersion(8) > 0) {
                                 // IE behaviour
+                                pub.getCurrentPosition = function(success, error, opts) {
+                                        pub.jsonp.fetch(ipGeolocationSrv, 
+                                                function( p ){ success( { timestamp: p.timestamp, 
+                                                                           coords: { 
+                                                                                latitude:   p.latitude, 
+                                                                                longitude:  p.longitude,
+                                                                                heading:    p.heading
+                                                                            }
+                                                                        });});
+                                }
+                                provider = true;
 
                         } else if ( typeof(Mojo) !=u && typeof(Mojo.Service.Request)!="Mojo.Service.Request") {
                                 provider = true;

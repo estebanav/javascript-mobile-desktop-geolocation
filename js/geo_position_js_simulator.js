@@ -12,7 +12,7 @@
 // Date: $Date: 2012-09-07 23:03:53 -0300 (Fri, 07 Sep 2012) $:    
 
 
-var geo_position_js_simulator=function(){
+var geoPositionSimulator=function(){
 
 	var pub = {};
 	var current_pos=null;
