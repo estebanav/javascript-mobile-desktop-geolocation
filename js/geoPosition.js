@@ -119,7 +119,7 @@ var geoPosition=function() {
         {			
                 try
                 {
-                    if (typeof(geoPositionSimulator)!=u){
+                    if ( typeof(geoPositionSimulator)!=u ){
                             provider=geoPositionSimulator;
                     } else if (typeof(bondi)!=u && typeof(bondi.geolocation)!=u  ) {
                             provider=bondi.geolocation;
