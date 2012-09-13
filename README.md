@@ -70,9 +70,9 @@ Then you have got to declare an array with the simulated locations this way:
 ~~~ 
 
 For further examples of these you can check example files:
-* [.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-no-simulation.html) -- 'Geolocate with no simulation'
-* [.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-no-simulation-gmap.html) -- 'Geolocate with no simulation with Google Maps'
-* [.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-simulation.html) -- 'Geolocate with simulation'
+* [demo-no-simulation.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-no-simulation.html) -- 'Geolocate with no simulation'
+* [demo-no-simulation-gmap.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-no-simulation-gmap.html) -- 'Geolocate with no simulation with Google Maps'
+* [demo-simulation.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-simulation.html) -- 'Geolocate with simulation'
 
 ## Contributing 
 
