@@ -68,6 +68,21 @@ Then you have got to declare an array with the simulated locations this way:
 	}
 </script>
 ~~~ 
+
+For further examples of these you can check example files:
+* [.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-no-simulation.html) -- 'Geolocate with no simulation'
+* [.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-no-simulation-gmap.html) -- 'Geolocate with no simulation with Google Maps'
+* [.html](https://github.com/estebanav/javascript-mobile-desktop-geolocation/blob/master/demo-simulation.html) -- 'Geolocate with simulation'
+
+## Contributing 
+
+1. Fork it.
+2. Create a branch (`git checkout -b my_markup`)
+3. Commit your changes (`git commit -am "Magic Added"`)
+4. Push to the branch (`git push origin my_markup`)
+5. Open a [Pull Request][1]
+6. Enjoy a refreshing Cherry Coke and wait
+
 ## Contributors
 
 * J. Esteban Acosta Villafañe ( https://github.com/estebanav  | http://us.linkedin.com/in/estebanav )
