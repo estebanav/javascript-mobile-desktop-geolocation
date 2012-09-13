@@ -14,11 +14,11 @@ The aim of this library is provide support for Geolocation mainly for old browse
 ## Usage
 
 Include Javascript Library file called geoPosition.js in your source code:
-
+~~~ html
 <script src="js/geoPosition.js" type="text/javascript" charset="utf-8"></script>
-
+~~~ 
 then call it this way:
-
+~~~ html
 <script type="text/javascript">
 	if(geoPosition.init()){  // Geolocation Initialisation
 			geoPosition.getCurrentPosition(success_callback,error_callback,{enableHighAccuracy:true});
@@ -34,15 +34,14 @@ then call it this way:
 	function error_callback(p){
 
 	}
-
 </script>
-
+~~~ 
 If you want to use simulated geoPositions for tasks such us mocking up you must include geoPositionSimulator.js 
-
+~~~ html
 <script src="js/geoPositionSimulator.js" type="text/javascript" charset="utf-8"></script>
-
+~~~ 
 Then you have got to declare an array with the simulated locations this way:
-
+~~~ html
 <script type="text/javascript">
 	var locations=new Array({ coords: {
 										latitude: 	30.2847664,
@@ -51,11 +50,7 @@ Then you have got to declare an array with the simulated locations this way:
 									}); // Simulated Positions
 	geoPositionSimulator.init(); // Geolocation Initialisation
 </script>
-
-
-
-
-
+~~~ 
 ## Contributors
 
 * J. Esteban Acosta Villafañe ( https://github.com/estebanav  | http://us.linkedin.com/in/estebanav )
