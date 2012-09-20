@@ -5,7 +5,7 @@ Mobile and Desktop Javascript Library for Geolocation Fallback. Based on geo-loc
 
 ## Target Browsers
 
-The aim of this library is provide support for Geolocation mainly for old browsers such us:
+The aim of this library is to provide support for Geolocation mainly for old browsers such us:
 
 - Microsoft Internet Explorer 6, 7, and 8
 - Blackberry
@@ -82,6 +82,10 @@ For further examples of these you can check example files:
 4. Push to the branch (`git push origin my_markup`)
 5. Open a [Pull Request]
 6. Enjoy a refreshing Cherry Coke and wait
+
+## Javascript Coding Guidelines
+
+My first rule of thumb is "Keep it simple, stupid!". So, please take a look at Google JavaScript Style Guide (http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml)
 
 ## Contributors
 
