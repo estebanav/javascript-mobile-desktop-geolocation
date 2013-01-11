@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title>javascript-mobile-desktop-geolocation Demo With No Simulation</title>
+	<style>
+		.error { color: red;}
+		ul { display: none;}
+	</style>
+</head>	
+<body>
+	<h1>javascript-mobile-desktop-geolocation With No Simulation</h1>
+	<h2>Results:</h2>
+	<p id="result">
+		<ul id="coordinates">
+			<li id="latitude"></li>
+			<li id="longitude"></li>
+		</ul>
+	</p>
+	<script src="js/geoPosition.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/geoPositionSimulator.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		if(geoPosition.init()){
+			//you can omit the error callback if you dont care about it.
+			geoPosition.getCurrentPosition(success_callback, { enableHighAccuracy:true, maximumAge: 1000 * 60 * 10 });
+		}
+		else{
+			document.getElementById('result').innerHTML = '<span class="error">Functionality not available</span>';
+		}
+
+		function success_callback(p)
+		{
+			var latitude = parseFloat( p.coords.latitude ).toFixed(2);
+			var longitude = parseFloat( p.coords.longitude ).toFixed(2);
+			document.getElementById('latitude').innerHTML = '<span class="information">Latitude:</span>' + latitude;
+			document.getElementById('longitude').innerHTML = '<span class="information">Longitude:</span>' + longitude;		
+			document.getElementById('coordinates').style.display = 'block';
+		}
+	</script>	
+</body>
+</html>
