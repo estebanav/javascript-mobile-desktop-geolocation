@@ -261,3 +261,5 @@ var geoPosition=function() {
         }
         return pub;
 }();
+
+module.exports = geoPosition;
