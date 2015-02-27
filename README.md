@@ -93,7 +93,7 @@ My first rule of thumb is "Keep it simple, stupid!". So, please take a look at G
 
 ## License
 
-This proyect was forked and continued develop under a MIT Licensing
+This project was forked and continued development under a MIT Licensing
 
 The MIT License (MIT)
 Copyright (c) 2012  J. Esteban Acosta Villafañe
